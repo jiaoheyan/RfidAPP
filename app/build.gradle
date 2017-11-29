@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.hb.jensenhaw.rfidapp"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    useLibrary 'org.apache.http.legacy'
+}
+repositories {
+    mavenCentral()
+//    maven { url "http://repo1.maven.org/maven2" }
+    maven { url "https://jitpack.io" }
+//    maven { url "https://mvnrepository.com/artifact" }
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile files('libs/SerialPort.jar')
+    compile files('libs/uhf_1_v1.0.jar')
+    compile project(path: ':qrcodelib')
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.google.android.gms:play-services-appindexing:9.8.0'
+    compile 'com.android.support:design:26.0.0-alpha1'
+    compile 'com.android.support:support-vector-drawable:26.0.0-alpha1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'junit:junit:4.12'
+}

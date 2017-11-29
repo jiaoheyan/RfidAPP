@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:gravity="center|top"
+    tools:context="com.hb.jensenhaw.rfidapp.MainActivity"
+    android:weightSum="1">
+
+        <Button
+            android:layout_marginTop="40dp"
+            android:id="@+id/qrBtn"
+            android:layout_width="350dp"
+            android:layout_weight="0.07"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:text="扫描条码"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/rfidBtn"
+        android:layout_width="350dp"
+        android:layout_weight="0.07"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape"
+        android:text="RFID码"
+        android:textColor="@color/white"
+        android:textSize="20dp"/>
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/enMoBtn"
+            android:layout_width="350dp"
+            android:layout_weight="0.07"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:textColor="@color/white"
+            android:text="环境监测"
+            android:textSize="20dp"/>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape"
+        android:id="@+id/logistcsBtn"
+        android:layout_width="350dp"
+        android:layout_weight="0.07"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+
+        android:text="追溯小车"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/visionBtn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.07"
+        android:background="@drawable/shape"
+        android:text="监控系统"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/setBtn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.07"
+        android:background="@drawable/shape"
+        android:text="设置"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_marginTop="60dp"
+        android:id="@+id/exitBtn"
+        android:layout_width="300dp"
+        android:layout_weight="0.07"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_button"
+        android:text="退出"
+        />
+</LinearLayout>

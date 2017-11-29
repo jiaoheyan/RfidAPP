@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="#e2e3e4"
+    tools:context="com.hb.jensenhaw.rfidapp.AGVActivity"
+    android:weightSum="1">
+
+    <Button
+        android:id="@+id/wifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="wifi"
+        android:background="@drawable/shape"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="wifi" />
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:background="@drawable/shape_layout"
+        >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="3"
+            android:text="AGV编号 "
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="未连接"
+            android:layout_gravity="center_vertical"
+            android:textSize="20dp"
+            android:id="@+id/agvName"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:onClick="connect"
+            android:text="connect"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:background="@drawable/shape"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <ImageView
+            android:id="@+id/Image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/activity_horizontal_margin" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="207dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_weight="0.43">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_toRightOf="@+id/button2"
+            android:layout_marginRight="40dip"
+            android:background="@drawable/up"
+            android:onClick="sendForward" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/stop"
+            android:onClick="sendStop" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="40dip"
+            android:layout_toLeftOf="@+id/button2"
+            android:background="@drawable/down"
+            android:onClick="sendBack" />
+    </LinearLayout>
+
+</LinearLayout>

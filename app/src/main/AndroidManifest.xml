@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hb.jensenhaw.rfidapp">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/car_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UHFActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".SimpleCaptureActivity" />
+        <activity
+            android:name=".LogisticsActivity"
+            android:label="@string/title_activity_logistics" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_setings" />
+        <activity
+            android:name=".EnMoActivity"
+            android:label="@string/title_activity_enMo" />
+        <activity
+            android:name=".PlantActivity" />
+
+        <activity
+            android:name=".CultureActivity"
+            android:label="@string/title_activity_culture" />
+        <activity
+            android:name=".AGVActivity"
+            android:label="@string/title_activity_AGV" />
+        <activity
+            android:name=".RFIDDetailActivity"
+            android:label="@string/title_activity_rfid_detail" />
+        <activity android:name=".SensorActivity" />
+    </application>
+
+</manifest>
