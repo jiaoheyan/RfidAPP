@@ -111,24 +111,6 @@ public class MainActivity extends AppCompatActivity {
         builder.setIcon(R.drawable.logo1);
         builder.create().show();
 
-//        LayoutInflater inflater = getLayoutInflater();
-//        View   dialog = inflater.inflate(R.layout.dialog,(ViewGroup) findViewById(R.id.dialog));
-//        EditText editText = (EditText) dialog.findViewById(R.id.et);
-
-
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("关于");
-//        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                //Toast.makeText(MainActivity.this, editText.getText().toString(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        builder.setView(dialog);
-//        builder.setIcon(R.mipmap.ic_launcher);
-//        builder.show();
-
-
     }
 
     /**
