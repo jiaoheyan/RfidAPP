@@ -8,6 +8,8 @@ import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +23,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_QR_CODE = 1;
@@ -28,16 +32,41 @@ public class MainActivity extends AppCompatActivity {
     private Button enMoBtn;
     private ViewPager vpGuide;
     private LinearLayout llpointgroup;
+    int index = 0;
     private View viewRedPoint;
     private int mPointWidth;
     private static final int[] mImageIds = new int[]{R.drawable.guideo1,R.drawable.guidetw1,
             R.drawable.guideth1};
     private ArrayList<ImageView> mImageViewList;
+    private Timer timer;
+    Handler mHandler  = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case 1:
+                    index++;
+                    System.out.println("==========index: "+index);
+                    vpGuide.setCurrentItem(index);
+                    if (index >= 1){
+                        index = 0;
+                    }
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        timer = new Timer();//创建Timer对象
+        //执行定时任务
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                    mHandler.sendEmptyMessage(1);
+                }
+        },2000,2000);
 
         vpGuide = (ViewPager) findViewById(R.id.vp_guide);
         llpointgroup = (LinearLayout) findViewById(R.id.ll_point_group);
@@ -212,8 +241,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onPageScrolled(int position, float positionOffset,
                                    int positionOffsetPixels) {
-            System.out.println("position"+position+"positionoffset"+positionOffset
-                    +"positionoffsetpixels"+positionOffsetPixels);
+            index = position;
             int len = (int) (mPointWidth*positionOffset)+mPointWidth*position;
             RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) viewRedPoint.getLayoutParams();
             params.leftMargin = len;

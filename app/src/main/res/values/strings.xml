@@ -515,7 +515,7 @@
 
 
     <string name="ip">服务器IP:</string>
-    <string name="serverPort">端口号:</string>
+    <string name="serverPort">端   口   号:</string>
     <string name="set_success">设置成功</string>
     <string name="title_activity_rfid_detail">RfidDetail</string>
     <string name="mingcheng">名称:</string>
