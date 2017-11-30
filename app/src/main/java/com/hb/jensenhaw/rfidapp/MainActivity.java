@@ -8,20 +8,44 @@ import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_QR_CODE = 1;
     private Button rfidBtn;
     private Button enMoBtn;
+    private ViewPager vpGuide;
+    private LinearLayout llpointgroup;
+    private View viewRedPoint;
+    private int mPointWidth;
+    private static final int[] mImageIds = new int[]{R.drawable.guideo1,R.drawable.guidetw1,
+            R.drawable.guideth1};
+    private ArrayList<ImageView> mImageViewList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        vpGuide = (ViewPager) findViewById(R.id.vp_guide);
+        llpointgroup = (LinearLayout) findViewById(R.id.ll_point_group);
+        viewRedPoint = findViewById(R.id.viewRedPoint);
+        initView();
+        vpGuide.setAdapter(new GuideAdapter());
+        vpGuide.setOnPageChangeListener(new GuidePageListener());
+
         rfidBtn = (Button)findViewById(R.id.rfidBtn);
         rfidBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,5 +152,83 @@ public class MainActivity extends AppCompatActivity {
             return "";
         }
     }
+    private void initView(){
+        mImageViewList = new ArrayList<ImageView>();
+        for (int i = 0; i < mImageIds.length; i++) {
+            ImageView image = new ImageView(this);
+            image.setBackgroundResource(mImageIds[i]);
+            mImageViewList.add(image);
+        }
+        for (int i = 0; i < mImageIds.length; i++) {
+            View point = new View(this);
+            point.setBackgroundResource(R.drawable.shape_point_gray);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(10,10);
+            if(i > 0)
+            {
+                params.leftMargin = 10;
+            }
+            point.setLayoutParams(params);
+            llpointgroup.addView(point);
+        }
+        llpointgroup.getViewTreeObserver().addOnGlobalLayoutListener
+                (new ViewTreeObserver.OnGlobalLayoutListener() {
 
+                    @Override
+                    public void onGlobalLayout() {
+                        llpointgroup.getViewTreeObserver()
+                                .removeGlobalOnLayoutListener(this);
+                        mPointWidth = llpointgroup.getChildAt(1).getLeft() - llpointgroup.getChildAt(0).getLeft();
+                    }
+                });
+    }
+
+    class GuideAdapter extends PagerAdapter {
+
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            return mImageIds.length;
+        }
+
+        @Override
+        public boolean isViewFromObject(View arg0, Object arg1) {
+            // TODO Auto-generated method stub
+            return arg0 == arg1;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            container.addView(mImageViewList.get(position));
+            return mImageViewList.get(position);
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            container.removeView((View) object);
+        }
+    }
+    class GuidePageListener implements ViewPager.OnPageChangeListener {
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset,
+                                   int positionOffsetPixels) {
+            System.out.println("position"+position+"positionoffset"+positionOffset
+                    +"positionoffsetpixels"+positionOffsetPixels);
+            int len = (int) (mPointWidth*positionOffset)+mPointWidth*position;
+            RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) viewRedPoint.getLayoutParams();
+            params.leftMargin = len;
+            viewRedPoint.setLayoutParams(params);
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+            // TODO Auto-generated method stub
+
+        }
+    }
 }
+

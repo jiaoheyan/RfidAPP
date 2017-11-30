@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -10,8 +10,32 @@
     tools:context="com.hb.jensenhaw.rfidapp.MainActivity"
     android:weightSum="1">
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_guide"
+        android:layout_width="match_parent"
+        android:layout_height="432px"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400px"
+        android:layout_centerHorizontal="true" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_point_group"
+            android:orientation="horizontal"
+            >
+        </LinearLayout>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:id="@+id/viewRedPoint"
+            android:background="@drawable/shape_point_red"/>
+    </RelativeLayout>
         <Button
-            android:layout_marginTop="40dp"
             android:id="@+id/qrBtn"
             android:layout_width="350dp"
             android:layout_weight="0.07"
@@ -19,9 +43,10 @@
             android:background="@drawable/shape"
             android:text="扫描条码"
             android:textColor="@color/white"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:layout_below="@+id/vp_guide"
+            android:layout_alignStart="@+id/rfidBtn" />
     <Button
-        android:layout_marginTop="20dp"
         android:id="@+id/rfidBtn"
         android:layout_width="350dp"
         android:layout_weight="0.07"
@@ -29,10 +54,11 @@
         android:background="@drawable/shape"
         android:text="RFID码"
         android:textColor="@color/white"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:layout_below="@+id/qrBtn"
+        android:layout_alignStart="@+id/enMoBtn" />
 
         <Button
-            android:layout_marginTop="20dp"
             android:id="@+id/enMoBtn"
             android:layout_width="350dp"
             android:layout_weight="0.07"
@@ -40,10 +66,12 @@
             android:background="@drawable/shape"
             android:textColor="@color/white"
             android:text="环境监测"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:layout_above="@+id/visionBtn"
+            android:layout_alignStart="@+id/logistcsBtn"
+            android:layout_marginBottom="15dp" />
 
     <Button
-        android:layout_marginTop="20dp"
         android:background="@drawable/shape"
         android:id="@+id/logistcsBtn"
         android:layout_width="350dp"
@@ -52,37 +80,41 @@
         android:textColor="@color/white"
 
         android:text="追溯小车"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:layout_below="@+id/rfidBtn"
+        android:layout_alignStart="@+id/visionBtn" />
 
     <Button
         android:id="@+id/visionBtn"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_weight="0.07"
         android:background="@drawable/shape"
         android:text="监控系统"
         android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_below="@+id/logistcsBtn"
+        android:layout_alignStart="@+id/setBtn" />
 
     <Button
         android:id="@+id/setBtn"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_weight="0.07"
         android:background="@drawable/shape"
         android:text="设置"
         android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_above="@+id/exitBtn"
+        android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_marginTop="60dp"
         android:id="@+id/exitBtn"
         android:layout_width="300dp"
         android:layout_weight="0.07"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_button"
         android:text="退出"
-        />
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
