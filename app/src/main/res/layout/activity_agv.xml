@@ -81,31 +81,31 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="1"
-        android:layout_weight="0.43">
+        android:layout_weight="0.50">
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="150px"
+            android:layout_height="150px"
             android:layout_toRightOf="@+id/button2"
             android:layout_marginRight="40dip"
-            android:background="@drawable/up"
+            android:background="@drawable/forward"
             android:onClick="sendForward" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="150px"
+            android:layout_height="150px"
             android:background="@drawable/stop"
             android:onClick="sendStop" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="150px"
+            android:layout_height="150px"
             android:layout_marginLeft="40dip"
             android:layout_toLeftOf="@+id/button2"
-            android:background="@drawable/down"
+            android:background="@drawable/back"
             android:onClick="sendBack" />
     </LinearLayout>
 
