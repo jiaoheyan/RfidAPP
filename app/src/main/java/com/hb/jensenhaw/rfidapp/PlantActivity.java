@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.AppIndex;
@@ -30,8 +31,9 @@ public class PlantActivity extends AppCompatActivity {
     private ParaSave para ;
     private GoogleApiClient client;
     Timer mTimer;
-    TextView oneTv,twoTv,threeTv,fourTv,fiveTv;
+    TextView oneTv,twoTv,threeTv,fourTv,fiveTv,sixTv,sevenTv;
     String plantWD1 = "0";
+    LinearLayout plantLl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,8 @@ public class PlantActivity extends AppCompatActivity {
         threeTv=(TextView) findViewById(R.id.threeTv);
         fourTv=(TextView) findViewById(R.id.fourTv);
         fiveTv=(TextView) findViewById(R.id.fiveTv);
+        sixTv = (TextView)findViewById(R.id.sixTv);
+        sevenTv = (TextView)findViewById(R.id.sevenTv);
 
         sendRequestWithHttpClient();
         mTimer = new Timer();
@@ -80,6 +84,8 @@ public class PlantActivity extends AppCompatActivity {
                     String plantFire="";
                     String plantShexiangtou="";
                     String plantWD;
+                    String plantSix;
+                    String plantSenven;
 
                     try {
                         JSONObject kuqucanshu  = new JSONObject(response.toString());
@@ -91,11 +97,15 @@ public class PlantActivity extends AppCompatActivity {
                         plantFire = ss[3];
                         plantShexiangtou = ss[4];
                         plantWD = ss[5];
+                        plantSix = ss[6];
+                        plantSenven = ss[7];
                         oneTv.setText(plantWendu);
                         twoTv.setText(plantShidu);
                         threeTv.setText(plantgas);
                         fourTv.setText(plantFire);
                         fiveTv.setText(plantShexiangtou);
+                        sixTv.setText(plantSix);
+                        sevenTv.setText(plantSenven);
                         if (plantWD.equals(plantWD1)){
 
                         }

@@ -47,10 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     index++;
                     System.out.println("==========index: "+index);
-                    vpGuide.setCurrentItem(index);
-                    if (index >= 1){
-                        index = 0;
-                    }
+                    vpGuide.setCurrentItem(index%3);
+
             }
         }
     };

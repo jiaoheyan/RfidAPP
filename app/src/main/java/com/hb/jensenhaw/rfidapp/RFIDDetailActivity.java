@@ -82,6 +82,7 @@ public class RFIDDetailActivity extends AppCompatActivity {
                     intent.putExtras(bundle);
                     intent.setClass(RFIDDetailActivity.this, LogisticsActivity.class);
                     startActivity(intent);
+                    RFIDDetailActivity.this.finish();
                     break;
 
                 default:

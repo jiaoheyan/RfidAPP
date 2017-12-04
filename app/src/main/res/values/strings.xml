@@ -517,7 +517,7 @@
     <string name="ip">服务器IP:</string>
     <string name="serverPort">端   口   号:</string>
     <string name="set_success">设置成功</string>
-    <string name="title_activity_rfid_detail">RfidDetail</string>
+    <string name="title_activity_rfid_detail">食品溯源</string>
     <string name="mingcheng">名称:</string>
     <string name="miaoshu">描述:</string>
     <string name="jiage">价格:</string>
