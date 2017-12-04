@@ -1,4 +1,4 @@
-package com.hb.jensenhaw.rfidapp;
+package com.hb.jensenhaw.suyuanapp;
 
 import org.junit.Test;
 

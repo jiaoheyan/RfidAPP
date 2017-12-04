@@ -17,7 +17,7 @@
             android:text="co浓度:"
             android:textSize="25dp"
             android:textColor="@color/white"/>
-        <com.hb.jensenhaw.rfidapp.PlantView
+        <com.hb.jensenhaw.suyuanapp.PlantView
             android:id="@+id/mv"
             android:layout_width="250dp"
             android:layout_height="250dp"

@@ -1,4 +1,4 @@
-package com.hb.jensenhaw.rfidapp;
+package com.hb.jensenhaw.suyuanapp;
 
 import android.os.Handler;
 import android.os.Message;
@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.AppIndex;
@@ -24,16 +23,16 @@ import org.json.JSONObject;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class PlantActivity extends AppCompatActivity {
+public class CultureActivity extends AppCompatActivity {
+
     public static final int SHOW_RESPONSE = 0;
-    private final static String TAG = PlantActivity.class.getSimpleName();
+    private final static String TAG = CultureActivity.class.getSimpleName();
     PlantView myView;
     private ParaSave para ;
     private GoogleApiClient client;
     Timer mTimer;
-    TextView oneTv,twoTv,threeTv,fourTv,fiveTv,sixTv,sevenTv;
-    String plantWD1 = "0";
-    LinearLayout plantLl;
+    TextView oneTv,twoTv,threeTv,fourTv,fiveTv;
+    String cultureWD1 = "0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,18 +46,10 @@ public class PlantActivity extends AppCompatActivity {
         threeTv=(TextView) findViewById(R.id.threeTv);
         fourTv=(TextView) findViewById(R.id.fourTv);
         fiveTv=(TextView) findViewById(R.id.fiveTv);
-        sixTv = (TextView)findViewById(R.id.sixTv);
-        sevenTv = (TextView)findViewById(R.id.sevenTv);
 
         sendRequestWithHttpClient();
         mTimer = new Timer();
         mTimer.schedule(task, 1000,1000);
-
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
     }
     TimerTask task= new TimerTask() {
         @Override
@@ -76,45 +67,39 @@ public class PlantActivity extends AppCompatActivity {
                 case SHOW_RESPONSE:
                     String response = (String) msg.obj;
                     Log.e(TAG, "handleMessage: "+response );
-                    String zzarea="";
+                    String yzarea="";
                     String[] ss = new String[8];
-                    String plantWendu="";
-                    String plantShidu="";
-                    String plantgas="";
-                    String plantFire="";
-                    String plantShexiangtou="";
-                    String plantWD;
-                    String plantSix;
-                    String plantSenven;
+                    String cultureWendu="";
+                    String cultureShidu="";
+                    String culturegas="";
+                    String cultureFire="";
+                    String cultureShexiangtou="";
+                    String cultureWD;
 
                     try {
                         JSONObject kuqucanshu  = new JSONObject(response.toString());
-                        zzarea = kuqucanshu.getString("zhongzhi");
-                        ss = zzarea.split(",");
-                        plantWendu = ss[0];
-                        plantShidu = ss[1];
-                        plantgas = ss[2];
-                        plantFire = ss[3];
-                        plantShexiangtou = ss[4];
-                        plantWD = ss[5];
-                        plantSix = ss[6];
-                        plantSenven = ss[7];
-                        oneTv.setText(plantWendu);
-                        twoTv.setText(plantShidu);
-                        threeTv.setText(plantgas);
-                        fourTv.setText(plantFire);
-                        fiveTv.setText(plantShexiangtou);
-                        sixTv.setText(plantSix);
-                        sevenTv.setText(plantSenven);
-                        if (plantWD.equals(plantWD1)){
+                        yzarea = kuqucanshu.getString("yangzhi");
+                        ss = yzarea.split(",");
+                        cultureWendu = ss[0];
+                        cultureShidu = ss[1];
+                        culturegas = ss[2];
+                        cultureFire = ss[3];
+                        cultureShexiangtou = ss[4];
+                        cultureWD = ss[5];
+                        oneTv.setText(cultureWendu);
+                        twoTv.setText(cultureShidu);
+                        threeTv.setText(culturegas);
+                        fourTv.setText(cultureFire);
+                        fiveTv.setText(cultureShexiangtou);
+                        if (cultureWD.equals(cultureWD1)){
 
                         }
                         else {
-                            myView.change(Float.parseFloat(plantWD));
+                            myView.change(Float.parseFloat(cultureWD));
                             myView.moveWaterLine();
                         }
-                        plantWD1 = plantWD;
-                        Log.e(TAG, "handleMessageqqq: "+plantWendu+plantShidu+plantgas+plantFire+plantShexiangtou );
+                        cultureWD1 = cultureWD;
+                        Log.e(TAG, "handleMessageqqq: "+cultureWendu+cultureShidu+culturegas+cultureFire+cultureShexiangtou );
                     }catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -147,7 +132,7 @@ public class PlantActivity extends AppCompatActivity {
             public void run() {
                 //用HttpClient发送请求，分为五步
                 //第一步：创建HttpClient对象
-                Log.e(TAG, "run:plantActivity " );
+                Log.e(TAG, "run:cultureActivity " );
                 Log.e(TAG, para.getIP() );
 
                 HttpClient httpCient = new DefaultHttpClient();

@@ -1,6 +1,5 @@
-package com.hb.jensenhaw.rfidapp;
+package com.hb.jensenhaw.suyuanapp;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;

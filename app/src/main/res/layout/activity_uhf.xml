@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/enmocolor"
     android:layout_height="match_parent" >
 
     <TextView
@@ -53,61 +54,6 @@
             android:layout_weight="0.01"
             android:background="@color/gray" />
 
-        <!--<LinearLayout-->
-            <!--android:id="@+id/linearLayoutUhfRead"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:orientation="vertical" >-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/textViewUhfMore"-->
-                <!--style="@style/TabStyle"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0dp"-->
-                <!--android:layout_weight="10"-->
-                <!--android:gravity="center"-->
-                <!--android:text="@string/read_and_write" />-->
-
-            <!--<View-->
-                <!--android:id="@+id/viewUhfMore"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:gravity="center" />-->
-        <!--</LinearLayout>-->
-
-        <!--<View-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_marginBottom="5dp"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:layout_weight="0.01"-->
-            <!--android:background="@color/gray" />-->
-
-        <!--<LinearLayout-->
-            <!--android:id="@+id/linearLayoutUhfLock"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:orientation="vertical" >-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/textViewUhfLock"-->
-                <!--style="@style/TabStyle"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0dp"-->
-                <!--android:layout_weight="10"-->
-                <!--android:gravity="center"-->
-                <!--android:text="@string/lock_and_kill" />-->
-
-            <!--<View-->
-                <!--android:id="@+id/viewUhfLock"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:gravity="center" />-->
-        <!--</LinearLayout>-->
 
         <View
             android:layout_width="0dp"

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
-        applicationId "com.hb.jensenhaw.rfidapp"
+        applicationId "com.hb.jensenhaw.suyuanapp"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1

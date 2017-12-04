@@ -1,4 +1,4 @@
-package com.hb.jensenhaw.rfidapp;
+package com.hb.jensenhaw.suyuanapp;
 
 import android.os.Bundle;
 import android.os.Handler;

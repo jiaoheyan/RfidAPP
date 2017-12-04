@@ -1,18 +1,14 @@
-package com.hb.jensenhaw.rfidapp;
+package com.hb.jensenhaw.suyuanapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.apache.http.HttpEntity;
@@ -25,27 +21,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
-
-import io.github.xudaojie.qrcodelib.CaptureActivity;
-
-/**
- * Created by xdj on 16/9/17.
- */
-
-public class SimpleCaptureActivity extends CaptureActivity {
-    private final static String TAG = SimpleCaptureActivity.class.getSimpleName();
+public class RFIDDetailActivity extends AppCompatActivity {
+    private final static String TAG = RFIDDetailActivity.class.getSimpleName();
     protected Activity mActivity = this;
     public static final int SHOW_RESPONSE = 0;
     private ParaSave para ;
 
-//    private AlertDialog mDialog;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
     private GoogleApiClient client;
-   // private ParaSave para ;
+    // private ParaSave para ;
     public String str;
     public String code;
 
@@ -55,9 +38,11 @@ public class SimpleCaptureActivity extends CaptureActivity {
         super.onCreate(savedInstanceState);
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
         para = new ParaSave(this) ;
-    }
+        Bundle bundle=getIntent().getExtras();
+        code=bundle.getString("message");
+        sendRequestWithHttpClient();
+        }
 
-    //新建Handler的对象，在这里接收Message，然后更新TextView控件的内容
     private Handler handler = new Handler() {
 
         @Override
@@ -71,7 +56,7 @@ public class SimpleCaptureActivity extends CaptureActivity {
                     try {
                         String s1 = msg.obj.toString();
                         String s2 = s1.substring(1,msg.obj.toString().length()-1).trim();
-                       // jsonObject = new JSONObject(s2);
+                        // jsonObject = new JSONObject(s2);
                         jsonArray =new JSONArray(s1);
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject temp = (JSONObject) jsonArray.get(i);
@@ -90,8 +75,9 @@ public class SimpleCaptureActivity extends CaptureActivity {
                     bundle.putString("danhao", code);
                     Intent intent = new Intent();
                     intent.putExtras(bundle);
-                    intent.setClass(SimpleCaptureActivity.this, LogisticsActivity.class);
+                    intent.setClass(RFIDDetailActivity.this, LogisticsActivity.class);
                     startActivity(intent);
+                    RFIDDetailActivity.this.finish();
                     break;
 
                 default:
@@ -112,7 +98,7 @@ public class SimpleCaptureActivity extends CaptureActivity {
                 HttpClient httpCient = new DefaultHttpClient();
                 //第二步：创建代表请求的对象,参数是访问的服务器地址
                 if (!code.equals("")) {
-  //                  HttpGet httpGet = new HttpGet("http://192.168.1.117:8080/openAPI/selectBydh.do?danhao=" + code);
+                    //                  HttpGet httpGet = new HttpGet("http://192.168.1.117:8080/openAPI/selectBydh.do?danhao=" + code);
                     HttpGet httpGet = new HttpGet("http://" + para.getIP()+":"+para.getPort()+"/openAPI/selectBycode.do?code=" + code);
 //                    HttpGet httpGet = new HttpGet("http://www.baidu.com");
 //                    Log.e(TAG," http://192.168.1.112:8080/openAPI/updateGuanying.do?code=" + code) ;
@@ -146,56 +132,5 @@ public class SimpleCaptureActivity extends CaptureActivity {
             }
         }).start();//这个start()方法不要忘记了
 
-    }
-
-    @Override
-    protected void handleResult(String resultString) {
-        if (TextUtils.isEmpty(resultString)) {
-            Toast.makeText(mActivity, io.github.xudaojie.qrcodelib.R.string.scan_failed, Toast.LENGTH_SHORT).show();
-            restartPreview();
-        } else {
-
-            code = resultString;
-            if(!code.isEmpty())
-            sendRequestWithHttpClient();
-
-        }
-    }
-
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("SimpleCapture Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
     }
 }

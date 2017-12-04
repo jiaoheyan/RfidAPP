@@ -11,7 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:background="#e2e3e4"
-    tools:context="com.hb.jensenhaw.rfidapp.AGVActivity"
+    tools:context="com.hb.jensenhaw.suyuanapp.AGVActivity"
     android:weightSum="1">
 
     <Button

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context="com.hb.jensenhaw.rfidapp.MainActivity">
+    tools:context="com.hb.jensenhaw.suyuanapp.MainActivity">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">

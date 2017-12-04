@@ -1,4 +1,4 @@
-package com.hb.jensenhaw.rfidapp;
+package com.hb.jensenhaw.suyuanapp;
 
 public class EPC {
 	private int id;
