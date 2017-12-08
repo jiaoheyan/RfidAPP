@@ -28,6 +28,7 @@ public class PlantActivity extends AppCompatActivity {
     public static final int SHOW_RESPONSE = 0;
     private final static String TAG = PlantActivity.class.getSimpleName();
     PlantView myView;
+    private MyTempView mTempView;
     private ParaSave para ;
     private GoogleApiClient client;
     Timer mTimer;
@@ -38,6 +39,8 @@ public class PlantActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant);
+        mTempView = (MyTempView) findViewById(R.id.mTemp);
+        mTempView.setTemp("37.5", 39.5f, 35.4f, this, 380);
         myView = (PlantView)findViewById(R.id.mv);
         para = new ParaSave(this) ;
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -80,12 +83,12 @@ public class PlantActivity extends AppCompatActivity {
                     String[] ss = new String[8];
                     String plantWendu="";
                     String plantShidu="";
-                    String plantgas="";
-                    String plantFire="";
-                    String plantShexiangtou="";
-                    String plantWD;
-                    String plantSix;
-                    String plantSenven;
+                    String plantHongwai="";
+                    String plantGuangzhao="";
+                    String plantQiti="";
+                    String plantKongqizhiliang = "";
+                    String plantHuoyan = "";
+                    String plantDeng = "";
 
                     try {
                         JSONObject kuqucanshu  = new JSONObject(response.toString());
@@ -93,28 +96,27 @@ public class PlantActivity extends AppCompatActivity {
                         ss = zzarea.split(",");
                         plantWendu = ss[0];
                         plantShidu = ss[1];
-                        plantgas = ss[2];
-                        plantFire = ss[3];
-                        plantShexiangtou = ss[4];
-                        plantWD = ss[5];
-                        plantSix = ss[6];
-                        plantSenven = ss[7];
-                        oneTv.setText(plantWendu);
-                        twoTv.setText(plantShidu);
-                        threeTv.setText(plantgas);
-                        fourTv.setText(plantFire);
-                        fiveTv.setText(plantShexiangtou);
-                        sixTv.setText(plantSix);
-                        sevenTv.setText(plantSenven);
-                        if (plantWD.equals(plantWD1)){
+                        plantHongwai = ss[2];
+                        plantGuangzhao = ss[3];
+                        plantQiti = ss[4];
+                        plantKongqizhiliang = ss[5];
+                        plantHuoyan = ss[6];
+                        plantDeng = ss[7];
+                        oneTv.setText(plantShidu);
+                        twoTv.setText(plantHongwai);
+                        threeTv.setText(plantGuangzhao);
+                        fourTv.setText(plantQiti);
+                        fiveTv.setText(plantKongqizhiliang);
+                        sixTv.setText(plantHuoyan);
+                        sevenTv.setText(plantDeng);
+                        if (plantWendu.equals(plantWD1)){
 
                         }
                         else {
-                            myView.change(Float.parseFloat(plantWD));
+                            myView.change(Float.parseFloat(plantWendu));
                             myView.moveWaterLine();
                         }
-                        plantWD1 = plantWD;
-                        Log.e(TAG, "handleMessageqqq: "+plantWendu+plantShidu+plantgas+plantFire+plantShexiangtou );
+                        plantWD1 = plantWendu;
                     }catch (JSONException e) {
                         e.printStackTrace();
                     }

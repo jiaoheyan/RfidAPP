@@ -827,13 +827,13 @@ public class UHFActivity extends AppCompatActivity implements OnClickListener
 		l3lockandkill.setVisibility(View.GONE);
 		l4settings.setVisibility(View.GONE);
 
-		textView1.setTextColor(getResources().getColor(R.color.white));
+		textView1.setTextColor(getResources().getColor(R.color.black));
 		view1.setBackgroundColor(getResources().getColor(R.color.white));
 //		textView2.setTextColor(getResources().getColor(R.color.black));
 //		view2.setBackgroundColor(getResources().getColor(R.color.white));
 //		textView3.setTextColor(getResources().getColor(R.color.black));
 //		view3.setBackgroundColor(getResources().getColor(R.color.white));
-		textView4.setTextColor(getResources().getColor(R.color.white));
+		textView4.setTextColor(getResources().getColor(R.color.black));
 		view4.setBackgroundColor(getResources().getColor(R.color.white));
 		textView.setTextColor(getResources().getColor(R.color.colorPrimary));
 		view.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
